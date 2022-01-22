@@ -1,34 +1,49 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
-const wraper = document.querySelector('.gallery');
-// console.log(wraper);
+const wraperRef = document.querySelector('.gallery');
+const linkRef = document.querySelector('.gallery__link');
+const imageRef = document.querySelector('.gallery__image');
+
+
 
 
 
 let itemOfgallery = galleryItems.map((image) => {
-    console.log(image);
-   
+       
     return `<div class="gallery__item">
 <a class="gallery__link" href="${image.original}">
 <img
       class="gallery__image"
       src="${image.preview}"
-      data-source="large-image.jpg"
-      alt="Image description"
+      data-source="${image.original}"
+      alt="${image.description}"
     />
 </a>
 
 </div>`
-    
-
 }).join('');
 
-wraper.insertAdjacentHTML("afterbegin", itemOfgallery); 
-// console.log(...itemOfgallrry);
+wraperRef.insertAdjacentHTML("afterbegin", itemOfgallery); 
+
+wraperRef.addEventListener('click', onLinkClick);
+function onLinkClick(event) {
+    event.preventDefault()
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  } 
+   
+  console.log(event.target.nodeName); 
+  // console.log(event.target.dataset.source);
+
+
+}
+
+
 /**
+ОБРАЗЕЦ
 const getImages = document.querySelector('.gallery');
 getImages.style.display = 'flex';
 getImages.style.justifyContent = 'space-between';
