@@ -34,9 +34,9 @@ function onLinkClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   } 
-   
-  console.log(event.target.nodeName); 
-  // console.log(event.target.dataset.source);
+  let getUrl = event.target.dataset.source;
+  // console.log(event.target.nodeName); 
+  console.log(getUrl);
 
 
 }
