@@ -36,11 +36,23 @@ function onLinkClick(event) {
   } 
   let getUrl = event.target.dataset.source;
   // console.log(event.target.nodeName); 
-  console.log(getUrl);
+  // console.log(getUrl);
 
+  const instance = basicLightbox.create(`
+<img src="${getUrl}">`
+  
+)
+
+instance.show()
 
 }
 
+
+
+// instance.close()
+
+
+// instance.show()
 
 /**
 ОБРАЗЕЦ
