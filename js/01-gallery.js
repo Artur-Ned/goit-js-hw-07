@@ -7,10 +7,6 @@ const wraperRef = document.querySelector('.gallery');
 const linkRef = document.querySelector('.gallery__link');
 const imageRef = document.querySelector('.gallery__image');
 
-
-
-
-
 let itemOfgallery = galleryItems.map((image) => {
        
     return `<div class="gallery__item">
@@ -30,29 +26,29 @@ wraperRef.insertAdjacentHTML("afterbegin", itemOfgallery);
 
 wraperRef.addEventListener('click', onLinkClick);
 function onLinkClick(event) {
-    event.preventDefault()
+  event.preventDefault()
   if (event.target.nodeName !== 'IMG') {
     return;
-  } 
+  }
   let getUrl = event.target.dataset.source;
   // console.log(event.target.nodeName); 
   // console.log(getUrl);
 
-  const instance = basicLightbox.create(`
-<img src="${getUrl}">`
+  const modalImg = basicLightbox.create(`
+<img src="${getUrl}">`)
+  modalImg.show()
   
-)
+  window.addEventListener('keydown', closeOnPressEsc);
 
-instance.show()
+  function closeOnPressEsc(event) {
+    if (event.key !== 'Escape') {
+      return;
 
+    } modalImg.close()
+  }
 }
 
 
-
-// instance.close()
-
-
-// instance.show()
 
 /**
 ОБРАЗЕЦ
